@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travelist</title>
+</head>
+<body>
+
+    <?php include 'insert.php'?>
+
+    <div class="wrapper">
+        <header>
+            <div class="logo"><img src="pictures/header_image.jpg" alt="Slika aviona na nebu."></div>
+            <h1>Travelist</h1>
+            
+            <nav>
+                <ul class="nav-list">
+                    <li id="line-top"><a href="index.php">Home</a></li>
+                    <li><a href="hrvatska.php">Hrvatska</a></li>
+                    <li><a href="inozemstvo.php">Inozemstvo</a></li>
+                    <li><a href="#">Unos</a></li>
+                    <li><a href="administracija.php">Administracija</a></li>
+                    <li><a href="registracija.php">Registracija</a></li>
+                    <li><a href="login.php">Prijava</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <div class="forma">
+                <form name="forma_clanak" action="skripta.php" method="POST" onsubmit="return validateForm()" enctype="multipart/form-data"> 
+                    <div class="form-item">
+                        <span id="porukaTitle" class="bojaPoruke"></span>
+                        <label for="title">Naslov članka</label> 
+                        <div class="form-field"> 
+                            <input type="text" id="naslov" name="naslov" class="form-field-textual"> 
+                        </div> 
+                    </div> 
+
+                    <div class="form-item"> 
+                        <span id="porukaAbout" class="bojaPoruke"></span>
+                        <label for="about">Kratki sadržaj članka</label> 
+                        <div class="form-field"> 
+                            <textarea id="sazetak" name="kratki" cols="30" rows="10" class="form-field-textual"></textarea> 
+                        </div> 
+                    </div> 
+                    
+                    <div class="form-item"> 
+                        <span id="porukaContent" class="bojaPoruke"></span>
+                        <label for="content">Sadržaj članka</label> 
+                        <div class="form-field"> 
+                            <textarea id="sadrzaj" name="sadrzaj" cols="30" rows="10" class="form-field-textual"></textarea> 
+                        </div> 
+                    </div> 
+                    
+                    <div class="form-item"> 
+                        <span id="porukaSlika" class="bojaPoruke"></span>
+                        <label for="pphoto">Slika: </label> 
+                        <div class="form-field"> 
+                            <input type="file" accept="image/jpg" class="input-text" id="slika" name="slika"/> 
+                        </div> 
+                    </div> 
+                    
+                    <div class="form-item"> 
+                        <span id="porukaKategorija" class="bojaPoruke"></span>
+                        <label for="category">Kategorija članka</label>
+                        <div class="form-field"> 
+                            <select id="kategorija" name="kategorija" id="" class="form-field-textual"> 
+                                <option value="" disabled selected>Odabir kategorije</option>
+                                <option value="hrvatska">Hrvatska</option> 
+                                <option value="inozemstvo">Inozemstvo</option> 
+                            </select> 
+                        </div> 
+                    </div> 
+                    
+                    <div class="form-item"> 
+                        <label>Spremiti u arhivu: <input id="arhiva" type="checkbox" name="arhiva"></label> 
+                    </div> 
+                    
+                    <div class="form-item" id="buttons"> 
+                        <button name="prihvati" id="prihvati" type="submit" value="prihvati">Prihvati</button> 
+                        <button name="ponisti" id="ponisti" type="reset" value="ponisti">Poništi</button> 
+                    </div> 
+                </form>
+            </div>
+        </main>
+
+        <footer>
+            <p>Objave na dan <span id='date-time'></span>
+                | &copy; Travelist GmbH | Home </p>
+        </footer>
+    </div>
+
+    <script>
+        const date = new Date();
+
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+
+        let currentDate = `${day}.${month}.${year}`;
+        console.log(currentDate);
+        document.getElementById('date-time').innerHTML=currentDate;
+    </script>
+
+<script type="text/javascript">
+    function validateForm() { 
+        var stanje = true;
+        var poljeTitle = document.getElementById("naslov"); 
+        var title = document.getElementById("naslov").value; 
+        
+        if (title.length < 5 || title.length > 30 || title === '') { 
+            poljeTitle.style.border="1px dashed red"; 
+            document.getElementById("porukaTitle").innerHTML="Naslov članka mora imati između 5 i 30 znakova!<br>";
+            stanje = false; 
+        }  
+        
+        var poljeAbout = document.getElementById("sazetak"); 
+        var about = document.getElementById("sazetak").value; 
+        
+        if (about.length < 10 || about.length > 100 || about === '') { 
+            poljeAbout.style.border="1px dashed red"; 
+            document.getElementById("porukaAbout").innerHTML="Kratki sadržaj mora imati između 10 i 100 znakova!<br>"; 
+            stanje = false; 
+        }
+        
+        var poljeContent = document.getElementById("sadrzaj"); 
+        var content = document.getElementById("sadrzaj").value; 
+        
+        if (content.length == 0) { 
+            poljeContent.style.border="1px dashed red"; 
+            document.getElementById("porukaContent").innerHTML="Sadržaj mora biti unesen!<br>";
+            stanje = false; 
+        } 
+        
+        var poljeSlika = document.getElementById("slika"); 
+        var pphoto = document.getElementById("slika").value; 
+        
+        if (pphoto.length == 0) {  
+            poljeSlika.style.border="1px dashed red"; 
+            document.getElementById("porukaSlika").innerHTML="Slika mora biti unesena!<br>"; 
+            stanje = false; 
+        }
+        
+        var poljeCategory = document.getElementById("kategorija"); 
+        if(document.getElementById("kategorija").selectedIndex == 0) { 
+            poljeCategory.style.border="1px dashed red"; 
+            document.getElementById("porukaKategorija").innerHTML="Kategorija mora biti odabrana!<br>"; 
+            stanje = false; 
+        } 
+
+        if (stanje){
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+</script>
+    
+</body>
+</html>

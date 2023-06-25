@@ -1,0 +1,255 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+    box-sizing: border-box;
+    color: rgb(12, 11, 11);
+    letter-spacing: 0.5px;
+
+}
+
+body {
+    background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(240, 212, 159));
+}
+
+
+.wrapper {
+    width: 60%;
+    margin: 0 auto;
+    
+}
+
+main {
+    min-height: 70vh;
+}
+
+.prvi {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+}
+
+.clanak {
+    width: 32%;
+    height: 300px;
+    padding-right: 10px;
+}
+
+
+
+/* NAV */
+.nav-list{
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    padding-top: 32px;
+    font-size: 18px;
+    font-weight: bold;
+    flex-wrap: wrap;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.nav-list a:hover {
+    text-decoration: underline;
+}
+
+.logo {
+    float: left;
+    width: 80px; 
+}
+
+main h3{
+    font-weight: lighter;
+    color: green;
+    font-size: 15px;
+}
+
+header h1 {
+    margin-left: 80px;
+    font-size: 40px;
+    font-weight: 700;
+    font-style: italic;
+}    
+
+
+.logo img{
+    float: left;
+    width: 70px;
+}
+
+img:hover {
+    opacity: .7;
+    transition: .9s;
+}
+
+
+
+.section-naslov {
+    clear: both;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+footer {
+    position: relative;
+    padding-top: 100px;
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+
+main img {
+    display: block;
+    max-width: 100%;
+}
+
+.naslov_podnaslov {
+    width: 100%;
+    padding-top: 20px;
+}
+
+.naslov_podnaslov h2 {
+    font-size: 30px;
+}
+
+.naslov_podnaslov h3 {
+    color: rgb(12, 11, 11);
+    font-weight: 500;
+    padding: 5px 0 2px 0;
+    font-size: 20px;
+    width: 100%;
+}
+
+.text {
+    font-weight: 400;
+    padding-top: 15px;
+    font-size: 18px;
+}
+
+.slika {
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(207, 202, 202);
+}
+
+.forma{
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.form-item {
+    padding-bottom: 15px;
+}
+
+.form-field-textual {
+    width: 100%;
+}
+
+.form-item button {
+    padding: 5px;
+    width: 100px;
+    background-color: rgb(52, 95, 119);
+    border-radius: 10px;
+    border: 0.3px solid grey;
+    margin: 0 30px;
+    color: white;
+}
+
+
+button:hover {
+    opacity: .9;
+    transition: .9s;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+#buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+label{
+    padding-bottom: 5px;
+}
+
+
+@media (max-width: 90em){
+    footer {
+        text-align: center;
+        padding-top: 200px;
+        margin-bottom: 20px;
+    }
+}
+
+
+
+@media (max-width: 80em) {
+    .clanak {
+        width: 50%;
+        padding-right: 10px;
+    }
+}
+
+
+
+@media (max-width: 40em){
+    
+
+    nav {
+        margin-top: 20px;
+        
+    }
+
+
+    nav a {
+        text-align: center;
+        text-decoration: none;
+    }
+
+
+    .nav-list li {
+        list-style: none;
+        height: 35px;
+        border-bottom: 1px solid black;
+        padding-top: 3px;
+        margin-bottom: 5px;
+    }
+
+    .nav-list {
+        margin: 15px 0;
+        text-align: center;
+        display: block;
+        padding-top: 10px;
+    }
+
+    #line-top {
+        border-top: 1px solid black;
+        height: 45px;
+        padding-top: 10px;
+    }
+
+    .clanak {
+        width: 100%;
+    }
+ 
+    .nav-list a:hover {
+        text-decoration: none;
+    }
+
+    header h1 {
+        padding-top: 22px;
+    }
+    
+}
+
+
+
+
